@@ -10,13 +10,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   logging: false
 });
 
-(async function(){
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-})()
+// 导出连接实例
+module.exports = sequelize;
 
 
