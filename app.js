@@ -4,7 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// 默认读取项目根目录下的.env
+require("dotenv").config();
+// 连接数据库
 require("./dao/dbConnect");
+
 
 // 引入路由
 var indexRouter = require('./routes/index');
