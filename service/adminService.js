@@ -1,5 +1,6 @@
 // admin 模块的业务逻辑层
 const md5 = require("md5");
+const jwt = require("jsonwebtoken");
 
 const {loginDao} = require("../dao/adminDao");
 
