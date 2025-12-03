@@ -3,7 +3,6 @@ var router = express.Router();
 
 const {getCaptchaService} = require("../service/captchaService");
 
-
 router.get("/", async function(req, res, next){
     const captcha = await getCaptchaService();
     req.session.captcha = captcha.text;

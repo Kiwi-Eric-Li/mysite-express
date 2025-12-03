@@ -2,6 +2,9 @@
  * 自定义错误
  * 当错误发生的时候，我们捕获到发生的错误，然后抛出我们自定义的错误
  */
+
+const {formatResponse} = require("./tool")
+
 class ServiceError extends Error{
     constructor(message, code){
         super(message);
@@ -9,7 +12,7 @@ class ServiceError extends Error{
     }
 
     toResponseJSON(){
-
+        return formatResponse(this.code, this.message, null);
     }
 }
 

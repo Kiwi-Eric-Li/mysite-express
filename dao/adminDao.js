@@ -12,4 +12,12 @@ module.exports.loginDao = async function(loginInfo){
     return result;
 }
 
+// 更新
+module.exports.updateAdminDao = async function(newAccountInfo){
+    return await adminModel.update(newAccountInfo, {
+        where: {
+            loginId: newAccountInfo.loginId
+        }
+    });
+}
 
