@@ -13,4 +13,12 @@ module.exports.analysisToken = function(token){
     return jwt.verify(token.split(" ")[1], md5(process.env.JWT_SECRET));
 }
 
+// 处理数组类型的响应数据
+module.exports.handleDataPattern = function(data){
+    const arr = [];
+    for(let i of data){
+        arr.push(i.dataValues);
+    }
+    return arr;
+}
 

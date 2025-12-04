@@ -18,6 +18,7 @@ require("./dao/db");
 // 引入路由
 var adminRouter = require('./routes/admin');
 var captchaRouter = require("./routes/captcha");
+var bannerRouter = require("./routes/banner");
 
 
 // 创建服务器实例
@@ -52,6 +53,7 @@ app.use(jwt({
 // 使用路由中间件
 app.use('/api/admin', adminRouter);
 app.use("/res/captcha", captchaRouter);
+app.use("/api/banner", bannerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

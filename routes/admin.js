@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const {loginService} = require("../service/adminService")
+const {loginService, updateAdminService} = require("../service/adminService")
 const {ValidationError} = require("../utils/errors")
 const {formatResponse, analysisToken} = require("../utils/tool")
 
@@ -33,7 +33,7 @@ router.get("/whoami", async function(req, res, next){
 });
 
 router.put("/", async function(req, res, next){
-    res.send()
+    res.send(await updateAdminService(req.body));
 })
 
 module.exports = router;
