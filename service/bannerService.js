@@ -6,5 +6,6 @@ module.exports.findBannerService = async function(){
 }
 
 module.exports.updateBannerService = async function(bannerArr){
-    return await updateBannerDao(bannerArr);
+    const banners = await updateBannerDao(bannerArr);
+    return formatResponse(0, "", handleDataPattern(banners));
 }
