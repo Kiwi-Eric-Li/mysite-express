@@ -18,7 +18,45 @@ module.exports.getOneBlogTypeService = async function(id){
     return formatResponse(0, "", data);
 }
 
+// 添加博客类型
+module.exports.addBlogTypeService = async function(blogType){
+    // 首先 进行数据验证
+    // define validated rule
+    const blogTypeRule = {
+        title: {
+            presence: {
+                allowEmpty: false
+            },
+            type: "string"
+        },
+        order: {
+            presence: {
+                allowEmpty: false
+            },
+            type: "string"
+        }
+    }
+    // validate data
+    const validateResult = validate.validate(blogType, blogTypeRule);
+    if(!validateResult){
+        blogType.articleCount = 0;  // 该类型下的文章数量初始化为0
+        const data = await addBlogTypeDao(blogType);
+        return formatResponse(0, "", data);
+    }else{
+        throw new ValidationError("数据验证失败");
+    }
+}
 
+// 修改博客类型
+module.exports.updateBlogTypeService = async function(id, blogType){
+    const result = await updateBlogTypeDao(id, blogType);
+    return formatResponse(0, "", result);
+}
 
+// 删除博客类型
+module.exports.deleteBlogTypeService = async function(id){
+    await deleteBlogTypeDao(id);
+    return formatResponse(0, "", null);
+}
 
 
