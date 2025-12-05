@@ -29,7 +29,13 @@ module.exports.updateBlogTypeDao = async function(id, blogType){
 }
 
 // 删除博客类型
-
+module.exports.deleteBlogTypeDao = async function(id){
+    return await blogTypeModel.destroy({
+        where: {
+            id
+        }
+    })
+}
 
 
 

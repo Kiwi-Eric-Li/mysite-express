@@ -1,15 +1,16 @@
 var express = require("express");
 var router = express.Router();
 
+var {getAllBlogTypeService, getOneBlogTypeService} = require("../service/blogTypeService");
 
 // 获取 博客分类
 router.get("/", async function(req, res, next){
-    
+    res.send(await getAllBlogTypeService());
 });
 
 // 根据id 获取一条博客分类
 router.get("/:id", async function(req, res, next){
-
+    res.send(await getOneBlogTypeService(req.params.id));
 });
 
 // 添加博客分类
