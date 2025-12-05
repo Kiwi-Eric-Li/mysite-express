@@ -19,6 +19,7 @@ require("./dao/db");
 var adminRouter = require('./routes/admin');
 var captchaRouter = require("./routes/captcha");
 var bannerRouter = require("./routes/banner");
+var blogTypeRouter = require("./routes/blogType");
 
 
 // 创建服务器实例
@@ -54,6 +55,7 @@ app.use(jwt({
 app.use('/api/admin', adminRouter);
 app.use("/res/captcha", captchaRouter);
 app.use("/api/banner", bannerRouter);
+app.use("/api/blogtype", blogTypeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
