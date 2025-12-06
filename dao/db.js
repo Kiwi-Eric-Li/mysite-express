@@ -3,8 +3,16 @@ const md5 = require("md5");
 const sequelize = require("./dbConnect");
 const adminModel = require("./model/adminModel");
 const bannerModel = require("./model/bannerModel");
+const blogTypeModel = require("./model/blogTypeModel");
+const aboutModel = require("./model/aboutModel");
 
 (async function(){
+
+    // 博客和博客类型之间的关系
+    // blogTypeModel.hasMany()
+
+
+
     // 将数据模型和表进行同步
     await sequelize.sync({
         alter: true
@@ -43,7 +51,14 @@ const bannerModel = require("./model/bannerModel");
         console.log("初始化banner数据完毕...")
     }
 
-
+    // initialize about data
+    const aboutCount = await aboutModel.count();
+    if(!aboutCount){
+        await aboutModel.create({
+            url: "https://github.com/Kiwi-Eric-Li"
+        });
+        console.log("初始化关于我们数据...");
+    }
 
 
 

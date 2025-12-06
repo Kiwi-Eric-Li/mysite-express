@@ -20,6 +20,7 @@ var adminRouter = require('./routes/admin');
 var captchaRouter = require("./routes/captcha");
 var bannerRouter = require("./routes/banner");
 var blogTypeRouter = require("./routes/blogType");
+var aboutRouter = require("./routes/about");
 
 
 // 创建服务器实例
@@ -46,7 +47,8 @@ app.use(jwt({
   // 不需要进行token验证的路由
   path: [
     {"url": "/api/admin/login", methods: ["POST"]},
-    {"url": "/res/captcha", methods: ["GET"]}
+    {"url": "/res/captcha", methods: ["GET"]},
+    {"url": "/api/about", methods: ["GET"]}
   ]
 }))
 
@@ -56,6 +58,7 @@ app.use('/api/admin', adminRouter);
 app.use("/res/captcha", captchaRouter);
 app.use("/api/banner", bannerRouter);
 app.use("/api/blogtype", blogTypeRouter);
+app.use("/api/about", aboutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
