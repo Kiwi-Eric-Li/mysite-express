@@ -21,6 +21,7 @@ var captchaRouter = require("./routes/captcha");
 var bannerRouter = require("./routes/banner");
 var blogTypeRouter = require("./routes/blogType");
 var aboutRouter = require("./routes/about");
+var projectRouter = require("./routes/project");
 
 
 // 创建服务器实例
@@ -59,6 +60,7 @@ app.use("/res/captcha", captchaRouter);
 app.use("/api/banner", bannerRouter);
 app.use("/api/blogtype", blogTypeRouter);
 app.use("/api/about", aboutRouter);
+app.use("/api/project", projectRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
