@@ -22,6 +22,7 @@ var bannerRouter = require("./routes/banner");
 var blogTypeRouter = require("./routes/blogType");
 var aboutRouter = require("./routes/about");
 var projectRouter = require("./routes/project");
+var settingRouter = require("./routes/setting");
 
 
 // 创建服务器实例
@@ -49,7 +50,8 @@ app.use(jwt({
   path: [
     {"url": "/api/admin/login", methods: ["POST"]},
     {"url": "/res/captcha", methods: ["GET"]},
-    {"url": "/api/about", methods: ["GET"]}
+    {"url": "/api/about", methods: ["GET"]},
+    {"url": "/api/setting", methods: ["GET"]}
   ]
 }))
 
@@ -61,6 +63,7 @@ app.use("/api/banner", bannerRouter);
 app.use("/api/blogtype", blogTypeRouter);
 app.use("/api/about", aboutRouter);
 app.use("/api/project", projectRouter);
+app.use("/api/setting", settingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

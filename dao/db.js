@@ -5,6 +5,7 @@ const adminModel = require("./model/adminModel");
 const bannerModel = require("./model/bannerModel");
 const blogTypeModel = require("./model/blogTypeModel");
 const aboutModel = require("./model/aboutModel");
+const settingModel = require("./model/settingModel");
 
 (async function(){
 
@@ -59,6 +60,25 @@ const aboutModel = require("./model/aboutModel");
         });
         console.log("初始化关于我们数据...");
     }
+
+    const settingCount = await settingModel.count();
+    if(!settingCount){
+        await settingModel.create({
+            avatar: "/static/images/avatar.jpeg",
+            siteTitle: "我的个人空间",
+            github: "https://github.com/Kiwi-Eric-Li",
+            qq: "3266503313",
+            qqQrCode: "",
+            weixin: 'yundanfengqing',
+            weixinQrCode: "",
+            mail: "lixf3626@gmail.com",
+            icp: "",
+            githubName: "Kiwi-Eric-Li",
+            favicon: ""
+        });
+        console.log("初始化全局设置数据...")
+    }
+
 
 
 
