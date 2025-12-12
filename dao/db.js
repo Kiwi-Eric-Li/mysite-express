@@ -6,11 +6,18 @@ const bannerModel = require("./model/bannerModel");
 const blogTypeModel = require("./model/blogTypeModel");
 const aboutModel = require("./model/aboutModel");
 const settingModel = require("./model/settingModel");
+const blogModel = require("./model/blogModel");
+const commentModel = require("./model/commentModel")
 
 (async function(){
 
     // 博客和博客类型之间的关系
-    // blogTypeModel.hasMany()
+    blogTypeModel.hasMany(blogModel, {foreignKey: 'categoryId', targetKey: "id"});
+    blogModel.belongsTo(blogTypeModel, {foreignKey: 'categoryId', targetKey: "id", as: "category"});
+
+    // 博客和博客评论之间的关系
+    blogModel.hasMany(commentModel, {foreignKey: 'blogId', target: "id"});
+    commentModel.belongsTo(blogModel, {foreignKey: "blogId", target: "id", as: "blog"});
 
 
 
