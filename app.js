@@ -24,6 +24,7 @@ var aboutRouter = require("./routes/about");
 var projectRouter = require("./routes/project");
 var settingRouter = require("./routes/setting");
 var commentRouter = require("./routes/comment");
+var uploadRouter = require("./routes/upload");
 
 
 // 创建服务器实例
@@ -70,6 +71,7 @@ app.use("/api/about", aboutRouter);
 app.use("/api/project", projectRouter);
 app.use("/api/setting", settingRouter);
 app.use("/api/comment", commentRouter);
+app.use("/api/upload", uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
