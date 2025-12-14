@@ -25,6 +25,7 @@ var projectRouter = require("./routes/project");
 var settingRouter = require("./routes/setting");
 var commentRouter = require("./routes/comment");
 var uploadRouter = require("./routes/upload");
+var blogRouter = require("./routes/blog");
 
 
 // 创建服务器实例
@@ -53,6 +54,8 @@ app.use(jwt({
     {"url": "/api/admin/login", methods: ["POST"]},
     {"url": "/res/captcha", methods: ["GET"]},
     {"url": "/api/about", methods: ["GET"]},
+    {"url": "/api/blog", methods: ["GET"]},
+    {"url": /\/api\/blog\/\d/, methods: ["GET"]},
     {"url": "/api/setting", methods: ["GET"]},
     {"url": "/api/comment", methods: ["GET", "POST"]},
     {"url": "/api/banner", methods: ["GET"]},
@@ -72,6 +75,7 @@ app.use("/api/project", projectRouter);
 app.use("/api/setting", settingRouter);
 app.use("/api/comment", commentRouter);
 app.use("/api/upload", uploadRouter);
+app.use("/api/blog", blogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
